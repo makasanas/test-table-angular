@@ -1,0 +1,52 @@
+.main-div {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+
+    .search-input {
+        width: 100%;
+        margin-bottom: 10px;
+
+        input {
+            padding: 10px 15px;
+            border-radius: 3px;
+            border: 1px solid #ececec;
+            width: 100%;
+        }
+
+    }
+
+    .ngx-datatable {
+        width: 100%;
+        border-radius: 3px;
+    }
+}
+
+.docks {
+    display: flex;
+    border-radius: 3px;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+
+    .total,
+    .available {
+        padding: 4px 8px 2px;
+        line-height: 1;
+        min-width: 33px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .total {
+        background: #B9C5DD;
+    }
+
+    .available {
+        background: #A7B3D2;
+        color: #fff;
+    }
+
+}

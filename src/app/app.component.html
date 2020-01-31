@@ -1,21 +1,54 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<div class="main-div">
+    <div class="search-input">
+        <input type="text" placeholder="Search Station" (keyup)="updateFilter($event)" />
+    </div>
 
-<router-outlet></router-outlet>
+    <ngx-datatable #table class="material new-styled" [columns]="columns" [headerHeight]="50" [footerHeight]="50"
+        [rows]="rows" [rowHeight]="'auto'" [columnMode]="'force'" [limit]="page.limit" [offset]="page.offset"
+        [sortType]="'multi'">
+
+        <ngx-datatable-column name="Station" prop="stationName">
+            <ng-template let-value="value"> {{value}} </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="Docks" [sortable]="false">
+
+            <ng-template let-row="row" ngx-datatable-cell-template>
+                <div class="docks">
+                    <span class="available">{{row.availableDocks}}</span>
+                    <span class="total">{{row.totalDocks}}</span>
+                </div>
+            </ng-template>
+        </ngx-datatable-column>
+
+
+        <ngx-datatable-column name="Status" prop="statusValue">
+            <ng-template let-value="value"> {{value}} </ng-template>
+        </ngx-datatable-column>
+
+
+        <ngx-datatable-column name="Available Bikes" prop="availableBikes">
+            <ng-template let-value="value"> {{value}} </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="Last Communication" prop="lastCommunicationTime">
+            <ng-template let-value="value"> {{value | niceDateFormatPipe}} </ng-template>
+        </ngx-datatable-column>
+
+
+        <!-- <ngx-datatable-column [sortable]="true">
+            <ng-template let-column="column" ngx-datatable-header-template>
+                Docks
+            </ng-template>
+            <ng-template let-row="row" ngx-datatable-cell-template>
+                <div class="docks">
+                    <span class="available">{{row.availableDocks}}</span>
+                    <span class="total">{{row.totalDocks}}</span>
+                </div>
+            </ng-template>
+        </ngx-datatable-column> -->
+
+
+
+    </ngx-datatable>
+</div>
